@@ -65,7 +65,7 @@ body
 }
 .all td
 {
-	min-width:100px;
+	min-width:50px; /*從 100 改成 50 */
 	padding:10px;
 }
 .tt
