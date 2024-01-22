@@ -30,26 +30,26 @@
 </div>
 
 <script>
-function login(table) {
-    $.get('./api/chk_ans.php', {
-        ans: $("#ans").val()
-    }, (chk) => {
-        if (parseInt(chk) == 0) {
-            alert("驗證碼錯誤，請重新輸入")
-        } else {
-            $.post("./api/chk_pw.php", {
-                table,
-                acc: $("#acc").val(),
-                pw: $("#pw").val()
-            }, (res) => {
-                if (parseInt(res) == 0) {
-                    alert("帳號或密碼錯誤，請重新輸入")
+    function login(table) {
+        $.get('./api/chk_ans.php', {
+            ans: $("#ans").val()
+        }, (chk) => {
+            if (parseInt(chk) == 0) {
+                alert("驗證碼錯誤，請重新輸入")
+            } else {
+                $.post("./api/chk_pw.php", {
+                    table, // 這裡多一個 table 是因為 chk_pw.php 會由 mem 和 amdin 這兩張資料表共用
+                    acc: $("#acc").val(),
+                    pw: $("#pw").val()
+                }, (res) => {
+                    if (parseInt(res) == 0) {
+                        alert("帳號或密碼錯誤，請重新輸入")
 
-                } else {
-                    location.href = "index.php";
-                }
-            })
-        }
-    })
-}
+                    } else {
+                        location.href = "index.php";
+                    }
+                })
+            }
+        })
+    }
 </script>
