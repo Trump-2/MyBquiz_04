@@ -63,9 +63,9 @@ function reg() {
     }
 
     $.get("./api/chk_acc.php", {
-        acc
+        acc: user.acc
     }, (res) => {
-        if (parseInt(res) == 1 || acc == 'admin') { // 等於 1 表示帳號註冊過了
+        if (parseInt(res) == 1 || user.acc == 'admin') { // 等於 1 表示帳號註冊過了
             alert(`此帳號${user.acc}已被使用`)
         } else {
             $.post("./api/reg.php", user, (res) => {
