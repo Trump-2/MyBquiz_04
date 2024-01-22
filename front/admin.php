@@ -14,7 +14,7 @@
             <?php
             $a = rand(10, 99);
             $b = rand(10, 99);
-            $_SESSION = $a + $b; // 把計算的結果存在 session 裡面
+            $_SESSION['ans'] = $a + $b; // 把計算的結果存在 session 裡面
             echo $a . " + " . $b . " = ";
             ?>
             <input type="text" name="ans" id="ans">
