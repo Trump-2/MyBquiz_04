@@ -1,7 +1,4 @@
-<h2>第一次購買</h2>
-<img src="./icon/0413.jpg" onclick="location.href='?do=reg'">
-
-<h2>會員登入</h2>
+<h2>管理員登入</h2>
 <table class="all">
     <tr>
         <td class="tt ct">帳號</td>
@@ -15,11 +12,11 @@
         <td class="tt ct">驗證碼</td>
         <td class="pp">
             <?php
-            $a = rand(10,99);
-            $b = rand(10,99);
+            $a = rand(10, 99);
+            $b = rand(10, 99);
             $_SESSION = $a + $b; // 把計算的結果存在 session 裡面
             echo $a . " + " . $b . " = ";
-        ?>
+            ?>
             <input type="text" name="chk" id="chk">
         </td>
     </tr>
