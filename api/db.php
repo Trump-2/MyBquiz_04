@@ -267,23 +267,3 @@ function to($url)
 {
   header("location:$url");
 }
-
-
-
-
-
-// 這裡因為不是每個分頁都會拿到 $_GET['do']，所以有這個判斷式，然後再把透過組合出來的資料表物件存到 $DB 中
-if (isset($_GET['do'])) {
-  // 在前端點擊 [管理登入] 時，因為 DB.php 中沒有對應的資料表物件，所以要再加上這個判斷式
-  if (isset(${ucfirst($_GET['do'])})) {
-    $DB = ${ucfirst($_GET['do'])};
-  }
-} else {
-  $DB = $Title;
-}
-
-if (!isset($_SESSION['visited'])) {
-  // 利用 sql 語法把 total + 1；而不是先把資料撈出來再 + 1
-  $Total->q("update `total` set `total` = `total` + 1 where `id` = 1");
-  $_SESSION['visited'] = 1;
-}
