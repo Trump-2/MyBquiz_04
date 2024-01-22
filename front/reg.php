@@ -8,7 +8,7 @@
         <td class="tt ct">帳號</td>
         <td class="pp">
             <input type="text" name="acc" id="acc">
-            <button>檢測帳號</button>
+            <button onclick="chkacc()">檢測帳號</button>
         </td>
     </tr>
     <tr>
@@ -32,3 +32,18 @@
     <button>註冊</button>
     <button>重置</button>
 </div>
+
+<script>
+    function chkacc() {
+        let acc = $("#acc").val()
+        $.get("./api/chk_acc.php", {
+            acc
+        }, (res) => {
+            if (parseInt(res) == 1) { // 等於 1 表示帳號註冊過了
+                alert(`此帳號${acc}已被使用`)
+            } else {
+                alert(`此帳號${acc}可以使用`)
+            }
+        })
+    }
+</script>
