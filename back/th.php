@@ -26,6 +26,7 @@
             </td>
         </tr>
         <?php
+        // 顯示大分類對應的中分類
         $mids = $Type->all(['big_id' => $big['id']]);
         foreach ($mids as $mid) {
 
@@ -47,12 +48,31 @@
 <script>
     getTypes(0); // 網頁一開始載入時，就會執行的 function；且一載入時就顯示大分類 ( 因為大分類的 big_id 為 0 );
 
+
+
     function getTypes(big_id) {
         $.get("./api/get_types.php", {
             big_id
         }, (types) => {
             $("#bigs").html(types); // 這裡因為老師打算後台回傳的東西就是 html 標籤
         })
+    }
+
+    function edit(dom, id) {
+        // js 的 prompt ( ) 彈出視窗，點擊 [確定 ] 會回傳 輸入值，點擊[ 取消 ] 回傳 null
+        if (name != null) {
+            let name = prompt("請輸入您要修改的分類名稱:", `${$(dom).parent().prev().text()}`) // jq 的 .prev() 會回傳前一個兄弟姊妹；
+            $.post("./api/save_type.php", {
+                name,
+                id
+            }, () => {
+                // 1. 第一種方式
+                // location.reload();
+
+                // 2. 第二種方式
+                $(dom).parent().prev().text(name);
+            });
+        }
     }
 
     function addType(type) {
