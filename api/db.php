@@ -270,3 +270,4 @@ function to($url)
 
 $Bottom = new DB('bottom');
 $Mem = new DB('mem');
+$Admin = new DB('admin');
