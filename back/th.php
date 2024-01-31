@@ -12,11 +12,11 @@
     <button>新增</button>
 </div>
 
-<!-- table.all>(tr.tt>td+td.ct>button*2)+tr.pp.ct>td*2 -->
+<!-- table.all>(tr.tt.ct>td+td>button*2)+tr.pp.ct>td*2 -->
 <table class="all">
     <tr class="tt ct">
         <td>流行皮件</td>
-        <td class="ct">
+        <td>
             <button>修改</button>
             <button>刪除</button>
         </td>
@@ -31,8 +31,13 @@
 </table>
 
 
-<h2 class="ct">商品管理</h2>\
-<div class="ct"><button>新增商品</button></div>
+<h2 class="ct">商品管理</h2>
+<div class="ct">
+    <button>新增商品</button>
+</div>
+<!-- table.all>(tr.tt.ct>td*5)+(tr.pp>td*4+td>button*4) -->
+
+
 <table class="all">
     <tr class="tt ct">
         <td>編號</td>
@@ -47,7 +52,10 @@
         <td></td>
         <td></td>
         <td>
-            <button>修改</button><button>刪除</button><button>上架</button><button>下架</button>
+            <button>修改</button>
+            <button>刪除</button>
+            <button>上架</button>
+            <button>下架</button>
         </td>
     </tr>
 </table>
