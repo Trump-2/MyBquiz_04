@@ -3,6 +3,7 @@
 <?php
 $row = $Mem->find($_GET['id']);
 ?>
+<!-- 跟註冊按鈕共用同一支 api -->
 <form action="./api/reg.php" method="post">
     <table class="all">
         <tr>
