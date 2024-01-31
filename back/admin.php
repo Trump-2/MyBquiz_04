@@ -13,21 +13,22 @@
     $rows = $Admin->all();
     foreach ($rows as $row) {
     ?>
-    <tr>
-        <td class="pp ct"><?= $row['acc'] ?></td>
-        <td class="pp ct"><?= str_repeat("*", strlen($row['pw'])) ?></td>
-        <td class="pp ct">
-            <?php
-            if ($row['acc'] == 'admin') {
-                echo "此帳號為最高權限";
-            } else {
-                // 這裡使用 &#39; 因為前面已經有使用單引號了，但又需要單引號，所以用 &#39; 代替
-                echo "<button onclick='location.href=&#39;?do=edit_admin&id={$row['id']}&#39;'>修改</button>";
-                echo "<button onclick=''>刪除</button>";
-            }
-            ?>
-        </td>
-    </tr>
+        <tr>
+            <td class="pp ct"><?= $row['acc'] ?></td>
+            <!-- 把明碼的密碼改成用 * 代替；這裡不是 <input> 所以不能使用 input:password -->
+            <td class="pp ct"><?= str_repeat("*", strlen($row['pw'])) ?></td>
+            <td class="pp ct">
+                <?php
+                if ($row['acc'] == 'admin') {
+                    echo "此帳號為最高權限";
+                } else {
+                    // 這裡使用 &#39; 因為前面已經有使用單引號了，但又需要單引號，所以用 &#39; 代替
+                    echo "<button onclick='location.href=&#39;?do=edit_admin&id={$row['id']}&#39;'>修改</button>";
+                    echo "<button onclick=''>刪除</button>";
+                }
+                ?>
+            </td>
+        </tr>
 
     <?php
     }
