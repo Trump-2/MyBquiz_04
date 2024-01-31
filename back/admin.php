@@ -1,6 +1,6 @@
 <div class="ct">
     <button type="button" onclick="location.href='?do=add_admin'">新增管理員</button>
-    <!-- test -->
+
 </div>
 <!-- table.all>tr*2>td.pp.ct*3 -->
 <table class="all">
@@ -13,12 +13,12 @@
     $rows = $Admin->all();
     foreach ($rows as $row) {
     ?>
-        <tr>
-            <td class="pp ct"><?= $row['acc'] ?></td>
-            <!-- 把明碼的密碼改成用 * 代替；這裡不是 <input> 所以不能使用 input:password -->
-            <td class="pp ct"><?= str_repeat("*", strlen($row['pw'])) ?></td>
-            <td class="pp ct">
-                <?php
+    <tr>
+        <td class="pp ct"><?= $row['acc'] ?></td>
+        <!-- 把明碼的密碼改成用 * 代替；這裡不是 <input> 所以不能使用 input:password -->
+        <td class="pp ct"><?= str_repeat("*", strlen($row['pw'])) ?></td>
+        <td class="pp ct">
+            <?php
                 if ($row['acc'] == 'admin') {
                     echo "此帳號為最高權限";
                 } else {
@@ -28,8 +28,8 @@
                     echo "<button onclick='del(&#39;admin&#39;,{$row['id']})'>刪除</button>";
                 }
                 ?>
-            </td>
-        </tr>
+        </td>
+    </tr>
 
     <?php
     }
