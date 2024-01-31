@@ -43,6 +43,7 @@ $pr = unserialize($row['pr']);
         </tr>
     </table>
     <div class="ct">
+        <!-- 送 id 到 save_admin.php，這樣才知道是哪個管理者要修改權限 -->
         <input type="hidden" name="id" value="<?= $row['id'] ?>">
         <input type="submit" value="修改">
         <input type="reset" value="重置">
