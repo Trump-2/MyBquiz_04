@@ -3,13 +3,13 @@
 <div class="ct">
     新增大分類
     <input type="text" name="big" id="big">
-    <button>新增</button>
+    <button onclick="addType('big')">新增</button>
 </div>
 <div class="ct">
     新增中分類
     <select name="big" id="bigs"></select>
     <input type="text" name="mid" id="mid">
-    <button>新增</button>
+    <button onclick="addType('mid')">新增</button>
 </div>
 
 <!-- table.all>(tr.tt.ct>td+td>button*2)+tr.pp.ct>td*2 -->
@@ -30,6 +30,40 @@
     </tr>
 </table>
 
+
+<script>
+    getTypes(0); // 網頁一開始載入時，就會執行的 function；且一載入時就顯示大分類 ( 因為大分類的 big_id 為 0 );
+
+    function getTypes(big_id) {
+        $.get("./api/get_types.php", {
+            big_id
+        }, (types) => {
+            $("#bigs").html(types); // 這裡因為老師打算後台回傳的東西就是 html 標籤
+        })
+    }
+
+    function addType(type) {
+        let name, big_id;
+
+        switch (type) {
+            case "big":
+                name = $("#big").val();
+                big_id = 0;
+                break;
+            case 'mid':
+                name = $("#mid").val();
+                big_id = $("#bigs").val();
+                break;
+        }
+
+        $.post("./api/save_type.php", {
+            name,
+            big_id // 這裡不用送 type 到後台，是因為不管是大分類跟中分類送到後台的 $_POST 都是一樣的
+        }, () => {
+            location.reload()
+        })
+    }
+</script>
 
 <h2 class="ct">商品管理</h2>
 <div class="ct">
