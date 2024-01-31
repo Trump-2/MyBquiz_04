@@ -35,7 +35,7 @@
         </tr>
         <tr>
             <th class="tt ct">商品圖片</th>
-            <td class="pp"><input type="text" name="img" value=""></td>
+            <td class="pp"><input type="file" name="img" value=""></td>
         </tr>
         <tr>
             <th class="tt ct">商品介紹</th>
@@ -62,7 +62,7 @@
             switch (type) {
                 case "big":
                     $("#big").html(types)
-                    getType('mid', $("#big").val())
+                    getTypes('mid', $("#big").val())
                     break;
                 case "mid":
                     $("#mid").html(types)
