@@ -13,12 +13,12 @@
     $rows = $Admin->all();
     foreach ($rows as $row) {
     ?>
-    <tr>
-        <td class="pp ct"><?= $row['acc'] ?></td>
-        <!-- 把明碼的密碼改成用 * 代替；這裡不是 <input> 所以不能使用 input:password -->
-        <td class="pp ct"><?= str_repeat("*", strlen($row['pw'])) ?></td>
-        <td class="pp ct">
-            <?php
+        <tr>
+            <td class="pp ct"><?= $row['acc'] ?></td>
+            <!-- 把明碼的密碼改成用 * 代替；這裡不是 <input> 所以不能使用 input:password -->
+            <td class="pp ct"><?= str_repeat("*", strlen($row['pw'])) ?></td>
+            <td class="pp ct">
+                <?php
                 if ($row['acc'] == 'admin') {
                     echo "此帳號為最高權限";
                 } else {
@@ -28,8 +28,8 @@
                     echo "<button onclick='del(&#39;admin&#39;,{$row['id']})'>刪除</button>";
                 }
                 ?>
-        </td>
-    </tr>
+            </td>
+        </tr>
 
     <?php
     }
@@ -38,13 +38,3 @@
 <div class="ct">
     <button type="button" onclick="location.href='./index.php'">返回</button>
 </div>
-<script>
-function del(table, id) {
-    $.post("./api/del.php", {
-        table,
-        id
-    }, () => {
-        location.reload()
-    })
-}
-</script>
