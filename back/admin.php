@@ -1,6 +1,6 @@
 <div class="ct">
     <button type="button" onclick="location.href='?do=add_admin'">新增管理員</button>
-    <!-- test -->
+
 </div>
 <!-- table.all>tr*2>td.pp.ct*3 -->
 <table class="all">
@@ -22,10 +22,12 @@
                 if ($row['acc'] == 'admin') {
                     echo "此帳號為最高權限";
                 } else {
-                    // 這裡使用 &#39; 因為前面已經有使用單引號了，但又需要單引號，所以用 &#39; 代替
-                    // 回去改成 html 的方式
-                    echo "<button onclick='location.href=&#39;?do=edit_admin&id={$row['id']}&#39;'>修改</button>";
-                    echo "<button onclick='del(&#39;admin&#39;,{$row['id']})'>刪除</button>";
+                ?>
+                    <!-- 這裡使用 &#39; 因為前面已經有使用單引號了，但又需要單引號，所以用 &#39; 代替
+                     改成用 html 語法的方式 -->
+                    <button onclick="location.href='?do=edit_admin&id=<?= $row['id'] ?>'">修改</button>
+                    <button onclick="del('admin',<?= $row['id'] ?>)">刪除</button>
+                <?php
                 }
                 ?>
             </td>
@@ -35,6 +37,6 @@
     }
     ?>
 </table>
-<div class="ct">
+<div class=" ct">
     <button type="button" onclick="location.href='./index.php'">返回</button>
 </div>
