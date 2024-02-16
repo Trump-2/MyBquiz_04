@@ -20,23 +20,23 @@ $goods = $Goods->find($_GET['id']);
         </tr>
         <tr>
             <th class="tt ct">商品編號</th>
-            <td class="pp"><?= $good['no'] ?></td>
+            <td class="pp"><?= $goods['no'] ?></td>
         </tr>
         <tr>
             <th class="tt ct">商品名稱</th>
-            <td class="pp"><input type="text" name="name" value="<?= $good['name'] ?>"></td>
+            <td class="pp"><input type="text" name="name" value="<?= $goods['name'] ?>"></td>
         </tr>
         <tr>
             <th class="tt ct">商品價格</th>
-            <td class="pp"><input type="text" name="price" value="<?= $good['price'] ?>"></td>
+            <td class="pp"><input type="text" name="price" value="<?= $goods['price'] ?>"></td>
         </tr>
         <tr>
             <th class="tt ct">規格</th>
-            <td class="pp"><input type="text" name="spec" value="<?= $good['spec'] ?>"></td>
+            <td class="pp"><input type="text" name="spec" value="<?= $goods['spec'] ?>"></td>
         </tr>
         <tr>
             <th class="tt ct">庫存量</th>
-            <td class="pp"><input type="text" name="stock" value="<?= $good['stock'] ?>"></td>
+            <td class="pp"><input type="text" name="stock" value="<?= $goods['stock'] ?>"></td>
         </tr>
         <tr>
             <th class="tt ct">商品圖片</th>
@@ -44,10 +44,13 @@ $goods = $Goods->find($_GET['id']);
         </tr>
         <tr>
             <th class="tt ct">商品介紹</th>
-            <td class="pp"><textarea name="intro" style="width:80%;height:150px;"><?= $good['intro'] ?></textarea></td>
+            <td class="pp"><textarea name="intro" style="width:80%;height:150px;"><?= $goods['intro'] ?></textarea>
+            </td>
         </tr>
     </table>
     <div class="ct">
+        <!-- 添加隱藏欄位，送商品 id 到後端 -->
+        <input type="hidden" name="id" value="<?= $goods['id'] ?>">
         <input type="submit" value="修改">
         <input type="reset" value="重置">
         <!-- 這裡記得要加上 onclick -->
@@ -56,25 +59,27 @@ $goods = $Goods->find($_GET['id']);
 </form>
 
 <script>
-    getTypes('big', 0); // 網頁一開始載入時，就會執行的 function；且一載入時就顯示大分類 ( 因為大分類的 big_id 為 0 );
+getTypes('big', 0); // 網頁一開始載入時，就會執行的 function；且一載入時就顯示大分類 ( 因為大分類的 big_id 為 0 );
 
 
 
-    function getTypes(type, big_id) {
-        $.get("./api/get_types.php", {
-            big_id
-        }, (types) => {
+function getTypes(type, big_id) {
+    $.get("./api/get_types.php", {
+        big_id
+    }, (types) => {
 
-            switch (type) {
-                case "big":
-                    $("#big").html(types)
-                    getTypes('mid', $("#big").val())
-                    break;
-                case "mid":
-                    $("#mid").html(types)
-                    break;
-            }
+        switch (type) {
+            case "big":
+                $("#big").html(types)
+                $("big").val(<?= $goods['big'] ?>)
+                getTypes('mid', $("#big").val())
+                break;
+            case "mid":
+                $("#mid").html(types)
+                $("#mid").val(<?= $goods['mid'] ?>)
+                break;
+        }
 
-        })
-    }
+    })
+}
 </script>
