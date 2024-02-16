@@ -1,6 +1,5 @@
 <?php include_once "./api/db.php" ?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0039) -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -30,13 +29,13 @@
 
 
                 ?>
-                <a href="./api/logout.php">會員登出</a> |
+                    <a href="./api/logout.php">會員登出</a> |
 
                 <?php
                 } else {
 
                 ?>
-                <a href="?do=login">會員登入</a> |
+                    <a href="?do=login">會員登入</a> |
 
                 <?php
                 }
@@ -44,12 +43,12 @@
                 <?php
                 if (isset($_SESSION['admin'])) {
                 ?>
-                <a href="./back.php">返回管理</a>
+                    <a href="./back.php">返回管理</a>
                 <?php
                 } else {
 
                 ?>
-                <a href="?do=admin">管理登入</a>
+                    <a href="?do=admin">管理登入</a>
 
                 <?php
                 }
@@ -68,26 +67,24 @@
                 foreach ($bigs as $big) {
 
                 ?>
-                <div class="ww">
+                    <div class="ww">
 
-                    <a
-                        href="?type=<?=$big['id']?>"><?= $big['name'] ?>(<?= $Goods->count(['sh' => 1, 'big' => $big['id']]) ?>)</a>
-                    <div class="s">
-                        <?php
+                        <a href="?type=<?= $big['id'] ?>"><?= $big['name'] ?>(<?= $Goods->count(['sh' => 1, 'big' => $big['id']]) ?>)</a>
+                        <div class="s">
+                            <?php
                             if ($Type->count(["big_id" => $big['id']])) {
                                 $mids = $Type->all(["big_id" => $big['id']]);
                                 foreach ($mids as $mid) {
 
 
                             ?>
-                        <a
-                            href="?type=<?=$mid['id']?>"><?= $mid['name'] ?>(<?= $Goods->count(['sh' => 1, 'mid' => $mid['id']]) ?>)</a>
-                        <?php
+                                    <a href="?type=<?= $mid['id'] ?>"><?= $mid['name'] ?>(<?= $Goods->count(['sh' => 1, 'mid' => $mid['id']]) ?>)</a>
+                            <?php
                                 }
                             }
                             ?>
+                        </div>
                     </div>
-                </div>
                 <?php
 
                 }
