@@ -32,33 +32,33 @@ if (empty($_SESSION['cart'])) {
         $goods = $Goods->find($id)
     ?>
 
-        <tr class="pp ct">
-            <td><?= $goods['no'] ?></td>
-            <td><?= $goods['name'] ?></td>
-            <td><?= $qt ?></td>
-            <td><?= $goods['stock'] ?></td>
-            <td><?= $goods['price'] ?></td>
-            <td><?= $goods['price'] * $qt ?></td>
-            <td><img src="./icon/0415.jpg" alt="" onclick="delCart(<?= $id ?>)"></td>
-        </tr>
+    <tr class="pp ct">
+        <td><?= $goods['no'] ?></td>
+        <td><?= $goods['name'] ?></td>
+        <td><?= $qt ?></td>
+        <td><?= $goods['stock'] ?></td>
+        <td><?= $goods['price'] ?></td>
+        <td><?= $goods['price'] * $qt ?></td>
+        <td><img src="./icon/0415.jpg" alt="" onclick="delCart(<?= $id ?>)"></td>
+    </tr>
     <?php
 
     }
     ?>
 </table>
 <div class="ct">
-    <img src="./icon/0411.jpg" alt="">
-    <img src="./icon/0412.jpg" alt="">
+    <img src="./icon/0411.jpg" alt="" onclick="location.href='index.php'">
+    <img src="./icon/0412.jpg" alt="" onclick="location.href='?do=checkout'">
 </div>
 
 <script>
-    function delCart(id) {
-        $.post("./api/del_cart.php", {
-            id
-        }, () => {
-            // .reload():代表不修改原網址的情況下對該畫面重新請求
-            // location.reload()
-            location.href = "?do=buycart"
-        })
-    }
+function delCart(id) {
+    $.post("./api/del_cart.php", {
+        id
+    }, () => {
+        // .reload():代表不修改原網址的情況下對該畫面重新請求
+        // location.reload()
+        location.href = "?do=buycart"
+    })
+}
 </script>
