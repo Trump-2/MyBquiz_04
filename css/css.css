@@ -39,7 +39,10 @@ body {
   display: inline-block;
   width: 65%;
   padding: 2%;
-  min-height: 550px;
+  /* 製作前端商品列表的時候，這裡要記得修改 */
+  height: 550px;
+  overflow: auto;
+  /*  */
   border: #000 1px solid;
 }
 #bottom {
