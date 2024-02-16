@@ -8,6 +8,7 @@ $goods = $Goods->find($_GET['id']);
         <tr>
             <th class="tt ct">所屬大分類</th>
             <td class="pp">
+                <!-- 這個 onchange 是我自己改寫的 -->
                 <select name="big" id="big" onchange="getTypes('mid',$('#big').val())"></select>
             </td>
         </tr>
@@ -55,25 +56,25 @@ $goods = $Goods->find($_GET['id']);
 </form>
 
 <script>
-getTypes('big', 0); // 網頁一開始載入時，就會執行的 function；且一載入時就顯示大分類 ( 因為大分類的 big_id 為 0 );
+    getTypes('big', 0); // 網頁一開始載入時，就會執行的 function；且一載入時就顯示大分類 ( 因為大分類的 big_id 為 0 );
 
 
 
-function getTypes(type, big_id) {
-    $.get("./api/get_types.php", {
-        big_id
-    }, (types) => {
+    function getTypes(type, big_id) {
+        $.get("./api/get_types.php", {
+            big_id
+        }, (types) => {
 
-        switch (type) {
-            case "big":
-                $("#big").html(types)
-                getTypes('mid', $("#big").val())
-                break;
-            case "mid":
-                $("#mid").html(types)
-                break;
-        }
+            switch (type) {
+                case "big":
+                    $("#big").html(types)
+                    getTypes('mid', $("#big").val())
+                    break;
+                case "mid":
+                    $("#mid").html(types)
+                    break;
+            }
 
-    })
-}
+        })
+    }
 </script>

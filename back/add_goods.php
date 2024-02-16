@@ -4,6 +4,7 @@
         <tr>
             <th class="tt ct">所屬大分類</th>
             <td class="pp">
+                <!-- 這個 onchange 是我自己改寫的 -->
                 <select name="big" id="big" onchange="getTypes('mid',$('#big').val())"></select>
             </td>
         </tr>
