@@ -9,7 +9,7 @@ if (!isset($_SESSION['mem'])) {
 
 echo "<h2 class='ct'>{$_SESSION['mem']}的購物車</h2>";
 
-if (!isset($_SESSION['cart'])) {
+if (empty($_SESSION['cart'])) {
     echo "<h2 class='ct'>購物車中尚無商品</h2>";
 }
 // else {
@@ -39,7 +39,7 @@ if (!isset($_SESSION['cart'])) {
             <td><?= $goods['stock'] ?></td>
             <td><?= $goods['price'] ?></td>
             <td><?= $goods['price'] * $qt ?></td>
-            <td><img src="./icon/0415.jpg" alt=""></td>
+            <td><img src="./icon/0415.jpg" alt="" onclick="delCart(<?= $id ?>)"></td>
         </tr>
     <?php
 
@@ -50,3 +50,15 @@ if (!isset($_SESSION['cart'])) {
     <img src="./icon/0411.jpg" alt="">
     <img src="./icon/0412.jpg" alt="">
 </div>
+
+<script>
+    function delCart(id) {
+        $.post("./api/del_cart.php", {
+            id
+        }, () => {
+            // .reload():代表不修改原網址的情況下對該畫面重新請求
+            // location.reload()
+            location.href = "?do=buycart"
+        })
+    }
+</script>
