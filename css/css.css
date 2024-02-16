@@ -96,7 +96,7 @@ input[type="password"] {
   display: none;
 }
 
-/* 加上 id 讓其權重變高 */
+/* 加上 id 讓其權重變高 ( 跟 #left a 一樣是 id 選擇器，但又因為此選擇器寫得更詳細，所有比 #left a 權重還高 )*/
 #left .s a {
   background: lightgreen;
 }
