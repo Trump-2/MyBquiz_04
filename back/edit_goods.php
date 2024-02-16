@@ -71,7 +71,7 @@ function getTypes(type, big_id) {
         switch (type) {
             case "big":
                 $("#big").html(types)
-                $("big").val(<?= $goods['big'] ?>)
+                $("#big").val(<?= $goods['big'] ?>)
                 getTypes('mid', $("#big").val())
                 break;
             case "mid":
