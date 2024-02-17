@@ -46,7 +46,7 @@
     <div class="ct">
         <input type="submit" value="新增">
         <input type="reset" value="重置">
-        <input type="button" value="返回">
+        <input type="button" value="返回" onclick="location.href='?do=th'">
     </div>
 </form>
 
@@ -56,7 +56,7 @@
 
 
     function getTypes(type, big_id) {
-        $.get("./api/get_types.php", {
+        $.get(" ./api/get_types.php", {
             big_id
         }, (types) => {
 
