@@ -68,7 +68,7 @@
 
                 ?>
                     <div class="ww">
-
+                        <!-- 這裡顯示數量，要熟悉 goods 這張資料表 -->
                         <a href="?type=<?= $big['id'] ?>"><?= $big['name'] ?>(<?= $Goods->count(['sh' => 1, 'big' => $big['id']]) ?>)</a>
                         <div class="s">
                             <?php

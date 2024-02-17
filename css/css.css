@@ -40,6 +40,7 @@ body {
   width: 65%;
   padding: 2%;
   /* 製作前端商品列表的時候，這裡要記得修改 */
+  /* 原本是 min-height，這裡改成固定大小 */
   height: 550px;
   overflow: auto;
   /*  */
@@ -95,15 +96,19 @@ input[type="text"],
 input[type="password"] {
   width: 170px;
 }
+
+/* 選單使用到 */
 .s {
   display: none;
 }
 
+/* 選單使用到 */
 /* 加上 id 讓其權重變高 ( 跟 #left a 一樣是 id 選擇器，但又因為此選擇器寫得更詳細，所有比 #left a 權重還高 )*/
 #left .s a {
   background: lightgreen;
 }
 
+/* 選單使用到 */
 /* 補充 : 這個寫法代表 class 為 ww 的 div */
 div.ww:hover > div.s {
   display: block;
