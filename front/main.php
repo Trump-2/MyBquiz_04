@@ -67,6 +67,7 @@ foreach ($goods as $good) {
 ?>
 <div class="item">
     <div class="img">
+        <!-- 按下圖片會跳到 detail.php 檔案 -->
         <a href="?do=detail&id=<?= $good['id'] ?>">
 
             <img src="./img/<?= $good['img'] ?>" style="width:80%;height:110px">
@@ -77,6 +78,7 @@ foreach ($goods as $good) {
         <div class="ct tt"><?= $good['name'] ?></div>
         <div>
             價錢 : <?= $good['price'] ?>
+            <!-- 傳給 buycart.php 的參數 qt 預設為 1 -->
             <img src="./icon/0402.jpg" style="float:right"
                 onclick="location.href='?do=buycart&id=<?= $good['id'] ?>&qt=1'">
         </div>
