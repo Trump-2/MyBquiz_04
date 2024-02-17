@@ -1,3 +1,4 @@
+<!-- 這個檔案是從 add_goods.php 複製過來的 -->
 <h2 class="ct">修改商品</h2>
 <?php
 $goods = $Goods->find($_GET['id']);
@@ -49,7 +50,7 @@ $goods = $Goods->find($_GET['id']);
         </tr>
     </table>
     <div class="ct">
-        <!-- 添加隱藏欄位，送商品 id 到後端 -->
+        <!-- 添加隱藏欄位，送商品 id 到後端，才能知道是哪個商品要修改-->
         <input type="hidden" name="id" value="<?= $goods['id'] ?>">
         <input type="submit" value="修改">
         <input type="reset" value="重置">
@@ -59,27 +60,29 @@ $goods = $Goods->find($_GET['id']);
 </form>
 
 <script>
-getTypes('big', 0); // 網頁一開始載入時，就會執行的 function；且一載入時就顯示大分類 ( 因為大分類的 big_id 為 0 );
+    getTypes('big', 0); // 網頁一開始載入時，就會執行的 function；且一載入時就顯示大分類 ( 因為大分類的 big_id 為 0 );
 
 
 
-function getTypes(type, big_id) {
-    $.get("./api/get_types.php", {
-        big_id
-    }, (types) => {
+    function getTypes(type, big_id) {
+        $.get("./api/get_types.php", {
+            big_id
+        }, (types) => {
 
-        switch (type) {
-            case "big":
-                $("#big").html(types)
-                $("#big").val(<?= $goods['big'] ?>)
-                getTypes('mid', $("#big").val())
-                break;
-            case "mid":
-                $("#mid").html(types)
-                $("#mid").val(<?= $goods['mid'] ?>)
-                break;
-        }
+            switch (type) {
+                case "big":
+                    $("#big").html(types)
+                    // 這行是為了讓畫面顯示要修改的商品對應的大分類
+                    $("#big").val(<?= $goods['big'] ?>)
+                    getTypes('mid', $("#big").val())
+                    break;
+                case "mid":
+                    $("#mid").html(types)
+                    // 這行是為了讓畫面顯示要修改的商品對應的中分類
+                    $("#mid").val(<?= $goods['mid'] ?>)
+                    break;
+            }
 
-    })
-}
+        })
+    }
 </script>
