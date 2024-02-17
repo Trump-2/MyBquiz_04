@@ -34,7 +34,7 @@ $goods = $Goods->find($_GET['id']);
 }
 
 /* 也可以寫成行內 style，就不用這個選擇器 */
-.info div:nth-child(1) {
+.info div:first-child {
     border-top: 1px solid #fff;
 }
 </style>
@@ -44,7 +44,8 @@ $goods = $Goods->find($_GET['id']);
 <!-- 這段從 main.php 複製來的 -->
 <div class="item">
     <div class="img">
-        <a href="?id=<?= $goods['id'] ?>">
+        <!-- 這裡因為沒有 do 參數所以會導回引入 main.php 的 index.php-->
+        <a href="?">
 
             <img src="./img/<?= $goods['img'] ?>" style="width:90%;height:200px">
         </a>
