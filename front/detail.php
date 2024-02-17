@@ -2,6 +2,7 @@
 $goods = $Goods->find($_GET['id']);
 ?>
 
+<!-- 這段 css 從 main.php 複製過來的 -->
 <style>
 .item {
     width: 80%;
@@ -41,7 +42,7 @@ $goods = $Goods->find($_GET['id']);
 
 <h2 class="ct"><?= $goods['name'] ?></h2>
 
-<!-- 這段從 main.php 複製來的 -->
+<!-- 這個 div 從 main.php 複製來的 -->
 <div class="item">
     <div class="img">
         <!-- 這裡因為沒有 do 參數所以會導回引入 main.php 的 index.php-->
@@ -59,6 +60,9 @@ $goods = $Goods->find($_GET['id']);
         <div>庫存量 : <?= $goods['stock'] ?></div>
     </div>
 </div>
+
+<!--  -->
+
 <div class="tt ct">
     購買數量:
     <input type="number" id="qt" value="1" style="width:50px">
