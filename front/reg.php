@@ -68,7 +68,8 @@
             if (parseInt(res) == 1 || user.acc == 'admin') { // 等於 1 表示帳號註冊過了
                 alert(`此帳號${user.acc}已被使用`)
             } else {
-                $.post("./api/reg.php", user, (res) => {
+                $.post("./api/reg.php", user, () => {
+                    alert("註冊成功，歡迎加入")
                     location.href = "?do=login"; // 註冊成功倒回登入頁面
                 })
             }
