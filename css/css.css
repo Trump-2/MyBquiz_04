@@ -37,8 +37,10 @@ body {
 }
 #right {
   display: inline-block;
-  width: 65%;
+  /* 將 index 載入的區塊的寬度變大 */
+  width: 71%;
   padding: 2%;
+  /*  */
   /* 製作前端商品列表的時候，這裡要記得修改 */
   /* 原本是 min-height，這裡改成固定大小 */
   height: 550px;
