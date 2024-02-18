@@ -1,3 +1,4 @@
+<!-- 一.這段從 edit_mem.php 複製過來再修改的 -->
 <h2 class="ct">填寫資料</h2>
 
 <?php
@@ -28,6 +29,8 @@ $row = $Mem->find(['acc' => $_SESSION['mem']]);
             <td class="pp"><input type="text" name="email" value="<?= $row['email'] ?>"></td>
         </tr>
     </table>
+
+    <!-- 二.這段從 buycart.php 複製過來再修改的 -->
     <table class="all">
         <tr class="tt ct">
             <td>編號</td>
@@ -54,9 +57,13 @@ $row = $Mem->find(['acc' => $_SESSION['mem']]);
         }
         ?>
     </table>
+    <!-- 二. -->
 
-    <!-- 這個 .all 是內建的 -->
+    <!-- 這段是新增的；
+    這個 .all 是內建的 -->
     <div class="all ct tt">總價:<?= $sum ?>元</div>
+    <!--  -->
+
 
     <div class="ct">
         <input type="hidden" name="id" value="<?= $row['id'] ?>">
@@ -64,3 +71,4 @@ $row = $Mem->find(['acc' => $_SESSION['mem']]);
         <input type="button" value="返回修改訂單" onclick="location.href='?do=buycart'">
     </div>
 </form>
+<!-- 一. -->
