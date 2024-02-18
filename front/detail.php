@@ -71,7 +71,8 @@ $goods = $Goods->find($_GET['id']);
 
 <script>
 function buy() {
-    let id = <?= $_GET['id'] ?>;
+
+    let id = <?= $_GET['id'] ?>; // 這裡要記得加 ；
     let qt = $("#qt").val()
     location.href = `?do=buycart&id=${id}&qt=${qt}`
 }
