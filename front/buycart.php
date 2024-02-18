@@ -10,7 +10,7 @@ if (!isset($_SESSION['mem'])) {
 
 echo "<h2 class='ct'>{$_SESSION['mem']}的購物車</h2>";
 
-// 用 session 來判斷有沒有購買商品
+// 用 session 來判斷有沒有購買商品，這裡用 empty 而不是 !isset()
 if (empty($_SESSION['cart'])) {
     echo "<h2 class='ct'>購物車中尚無商品</h2>";
 }
