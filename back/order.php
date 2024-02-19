@@ -16,24 +16,24 @@
 
 
     ?>
-        <tr>
-            <td class="ct pp">
-                <a href="?do=detail&id=<?= $order['id'] ?>">
-                    <?= $order['no'] ?>
-                </a>
+    <tr>
+        <td class="ct pp">
+            <a href="?do=detail&id=<?= $order['id'] ?>">
+                <?= $order['no'] ?>
+            </a>
 
-            </td>
-            <td class="ct pp"><?= $order['total'] ?></td>
-            <td class="ct pp"><?= $order['acc'] ?></td>
-            <td class="ct pp"><?= $order['name'] ?></td>
-            <td class="ct pp"><?= date("Y/m/d", strtotime($order['orderdate'])) ?></td>
-            <td class="ct pp">
-                <?php
+        </td>
+        <td class="ct pp"><?= $order['total'] ?></td>
+        <td class="ct pp"><?= $order['acc'] ?></td>
+        <td class="ct pp"><?= $order['name'] ?></td>
+        <td class="ct pp"><?= date("Y/m/d", strtotime($order['orderdate'])) ?></td>
+        <td class="ct pp">
+            <?php
 
-                echo "<button onclick='del(&#39;orders&#39;,{$row['id']})'>刪除</button>";
+                echo "<button onclick='del(&#39;orders&#39;,{$order['id']})'>刪除</button>";
                 ?>
-            </td>
-        </tr>
+        </td>
+    </tr>
     <?php
     }
 
