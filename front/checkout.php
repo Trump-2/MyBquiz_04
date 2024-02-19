@@ -45,13 +45,13 @@ $row = $Mem->find(['acc' => $_SESSION['mem']]);
             $goods = $Goods->find($id)
         ?>
 
-        <tr class="pp ct">
-            <td><?= $goods['name'] ?></td>
-            <td><?= $goods['no'] ?></td>
-            <td><?= $qt ?></td>
-            <td><?= $goods['price'] ?></td>
-            <td><?= $goods['price'] * $qt ?></td>
-        </tr>
+            <tr class="pp ct">
+                <td><?= $goods['name'] ?></td>
+                <td><?= $goods['no'] ?></td>
+                <td><?= $qt ?></td>
+                <td><?= $goods['price'] ?></td>
+                <td><?= $goods['price'] * $qt ?></td>
+            </tr>
         <?php
             $sum += $goods['price'] * $qt;
         }
@@ -66,7 +66,7 @@ $row = $Mem->find(['acc' => $_SESSION['mem']]);
 
 
     <div class="ct">
-        <input type="hidden" name="id" value="<?= $row['id'] ?>">
+        <input type="hidden" name="total" value="<?= $sum ?>">
         <input type="submit" value="確定送出">
         <input type="button" value="返回修改訂單" onclick="location.href='?do=buycart'">
     </div>
