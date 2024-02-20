@@ -10,7 +10,7 @@ $row = $Order->find($_GET['id']);
 <form action="./api/order.php" method="post">
     <table class="all">
         <tr>
-            <td class="tt ct">登入帳號</td>
+            <td class="tt ct">會員帳號</td>
             <td class="pp">
                 <?= $row['acc'] ?>
             </td>

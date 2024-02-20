@@ -45,13 +45,13 @@ $row = $Mem->find(['acc' => $_SESSION['mem']]);
             $goods = $Goods->find($id)
         ?>
 
-            <tr class="pp ct">
-                <td><?= $goods['name'] ?></td>
-                <td><?= $goods['no'] ?></td>
-                <td><?= $qt ?></td>
-                <td><?= $goods['price'] ?></td>
-                <td><?= $goods['price'] * $qt ?></td>
-            </tr>
+        <tr class="pp ct">
+            <td><?= $goods['name'] ?></td>
+            <td><?= $goods['no'] ?></td>
+            <td><?= $qt ?></td>
+            <td><?= $goods['price'] ?></td>
+            <td><?= $goods['price'] * $qt ?></td>
+        </tr>
         <?php
             $sum += $goods['price'] * $qt;
         }
