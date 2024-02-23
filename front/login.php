@@ -14,13 +14,8 @@
     <tr>
         <td class="tt ct">驗證碼</td>
         <td class="pp">
-            <?php
-            $a = rand(10, 99);
-            $b = rand(10, 99);
-            $_SESSION['ans'] = $a + $b; // 把計算的結果存在 session 裡面
-            echo $a . " + " . $b . " = ";
-            ?>
             <input type="text" name="ans" id="ans">
+            <img src="" id="captcha"><button onclick="captcha()">重新產生</button>
         </td>
     </tr>
 </table>
@@ -30,26 +25,34 @@
 </div>
 
 <script>
-    function login(table) {
-        $.get('./api/chk_ans.php', {
-            ans: $("#ans").val()
-        }, (chk) => {
-            if (parseInt(chk) == 0) {
-                alert("驗證碼錯誤，請重新輸入")
-            } else {
-                $.post("./api/chk_pw.php", {
-                    table, // 這裡多一個 table 是因為 chk_pw.php 會由 mem 和 amdin 這兩張資料表共用
-                    acc: $("#acc").val(),
-                    pw: $("#pw").val()
-                }, (res) => {
-                    if (parseInt(res) == 0) {
-                        alert("帳號或密碼錯誤，請重新輸入")
+captcha()
 
-                    } else {
-                        location.href = "index.php";
-                    }
-                })
-            }
-        })
-    }
+function captcha() {
+    $.get("./api/captcha.php", (img) => {
+        $("#captcha").attr('src', img)
+    })
+}
+
+function login(table) {
+    $.get('./api/chk_ans.php', {
+        ans: $("#ans").val()
+    }, (chk) => {
+        if (parseInt(chk) == 0) {
+            alert("驗證碼錯誤，請重新輸入")
+        } else {
+            $.post("./api/chk_pw.php", {
+                table, // 這裡多一個 table 是因為 chk_pw.php 會由 mem 和 amdin 這兩張資料表共用
+                acc: $("#acc").val(),
+                pw: $("#pw").val()
+            }, (res) => {
+                if (parseInt(res) == 0) {
+                    alert("帳號或密碼錯誤，請重新輸入")
+
+                } else {
+                    location.href = "index.php";
+                }
+            })
+        }
+    })
+}
 </script>
